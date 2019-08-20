@@ -5,10 +5,24 @@
 double func(double t, double y);
 
 int main(int argc, char **argv) {
-    double y0, step_size;
+    int i;
+    double y0, t0, h;
+    double yk, y_prev, t_prev;
     y0 = atof(argv[1]);
-    step_size  = atof(argv[2]);
-    printf("initial value: %f, step-size: %f\n", y0, step_size);
+    t0 = atof(argv[2]);
+    h  = atof(argv[3]);
+    printf("y0: %f, t0: %f h: %f\n", y0, t0, h);
+
+    printf("Approximated values:\n");
+    printf("y(0) = %f\n", y0);
+    y_prev = y0;
+    t_prev = t0;
+    for (i = 1; i < 6; i++) {
+        yk = y_prev + func(t_prev, y_prev) * h;
+	y_prev = yk;
+	t_prev = h * i;
+        printf("y(%f) = %f\n", t_prev, yk);
+    }
 }
 
 double func(double t, double y) {
