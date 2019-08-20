@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     printf("y(0) = %f\n", y0);
     y_prev = y0;
     t_prev = t0;
-    for (i = 1; i < 6; i++) {
+    for (i = 1; i < 7; i++) {
         yk = y_prev + func(t_prev, y_prev) * h;
 	y_prev = yk;
 	t_prev = h * i;
